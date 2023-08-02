@@ -311,29 +311,26 @@
                 var sLoader = $('.submit-loader');
                 $.ajax({
                     type: "POST",
-                    url: "inc/sendEmail.php",
+                    url: "/.netlify/functions/form-submit", // Atualize a URL para apontar para a função lambda no Netlify
                     data: $(form).serialize(),
                     beforeSend: function () {
                         sLoader.slideDown("slow");
                     },
                     success: function (msg) {
-
                         // Message was sent
                         if (msg == 'OK') {
                             sLoader.slideUp("slow");
                             $('.message-warning').fadeOut();
                             $('#contactForm').fadeOut();
                             $('.message-success').fadeIn();
-                        }
-                        // There was an error
-                        else {
+                        } else {
+                            // There was an error
                             sLoader.slideUp("slow");
                             $('.message-warning').html(msg);
                             $('.message-warning').slideDown("slow");
                         }
                     },
                     error: function () {
-
                         sLoader.slideUp("slow");
                         $('.message-warning').html("Something went wrong. Please try again.");
                         $('.message-warning').slideDown("slow");
@@ -342,6 +339,7 @@
             }
         });
     };
+    
 
     /* Back to Top
      * ------------------------------------------------------ */
