@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #d7dbe0;
+    --white: #fff;
+    --dark_grey: #404f5ec1;
+    --light_gray: rgba(117, 117, 120, 0.919);
+    --light_green: #ebf5dc;
+    --dark_green: #9ABC66;
+    --button_color1: rgb(11, 123, 13);
+    --button_color2: rgba(55, 172, 9, 0.337);
+
+}
+
+body {
+    text-align: center;
+    background: var(--background);
+  }
+
+  #card_main {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+  }
+
+  .card_body {
+    background: var(--white);
+    padding: 60px;
+    border-radius: 35px;
+    box-shadow: var(--light_gray) 0px 30px 60px -12px inset, 
+    var(--dark_grey) 0px 18px 36px -18px inset;
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  #checkmark {
+    border-radius:200px; 
+    height:200px; width:200px; 
+    background: var(--light_green); 
+    margin:0 auto;
+  }
+
+  i {
+    color: var(--dark_green);
+    font-size: 8.5em;
+    line-height: 200px;
+    margin-left:-15px;
+  }
+
+    h1 {
+      color: var(--dark_green);
+      font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+      font-weight: 900;
+      font-size: 2.5em;
+      margin-bottom: 1.3rem;
+    }
+    
+    p {
+      color: var(--dark_grey);
+      font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+      font-size: 1.3em;
+      margin: 0;
+    }
+
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    margin: 20px;
+    font-size: 1.5em;
+  }
+
+  .custom-btn {
+    width: 130px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+  }
+
+  .btn-5 {
+    color: var(--white);
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    background: linear-gradient(0deg, var(--button_color1) 0%, var(--button_color2) 100%);
+  }
+  .btn-5:hover {
+    color: var(--button_color1);
+    background: transparent;
+    box-shadow:none;
+  }
+  .btn-5:before,
+  .btn-5:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: var(--button_color2);
+    box-shadow:
+     -1px -1px 5px 0px #fff,
+     7px 7px 20px 0px #0003,
+     4px 4px 5px 0px #0002;
+    transition:400ms ease all;
+  }
+  .btn-5:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .btn-5:hover:before,
+  .btn-5:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
