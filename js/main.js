@@ -120,84 +120,6 @@
         });
     };
 
-
-    /* photoswipe
-     * ----------------------------------------------------- */
-    var ssPhotoswipe = function () {
-        var items = [],
-            $pswp = $('.pswp')[0],
-            $folioItems = $('.item-folio');
-
-        // get items
-        $folioItems.each(function (i) {
-
-            var $folio = $(this),
-                $thumbLink = $folio.find('.thumb-link'),
-                $title = $folio.find('.item-folio__title'),
-                $caption = $folio.find('.item-folio__caption'),
-                $titleText = '<h4>' + $.trim($title.html()) + '</h4>',
-                $captionText = $.trim($caption.html()),
-                $href = $thumbLink.attr('href'),
-                $size = $thumbLink.data('size').split('x'),
-                $width = $size[0],
-                $height = $size[1];
-
-            var item = {
-                src: $href,
-                w: $width,
-                h: $height
-            }
-
-            if ($caption.length > 0) {
-                item.title = $.trim($titleText + $captionText);
-            }
-
-            items.push(item);
-        });
-
-        // bind click event
-        $folioItems.each(function (i) {
-
-            $(this).on('click', function (e) {
-                e.preventDefault();
-                var options = {
-                    index: i,
-                    showHideOpacity: true
-                }
-
-                // initialize PhotoSwipe
-                var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
-                lightBox.init();
-            });
-        });
-    };
-
-    /* slick slider
-     * ------------------------------------------------------ */
-    var ssSlickSlider = function () {
-        $('.testimonials__slider').slick({
-            arrows: true,
-            dots: false,
-            infinite: true,
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            prevArrow: "<div class=\'slick-prev\'><i class=\'im im-arrow-left\' aria-hidden=\'true\'></i></div>",
-            nextArrow: "<div class=\'slick-next\'><i class=\'im im-arrow-right\' aria-hidden=\'true\'></i></div>",
-            pauseOnFocus: false,
-            autoplaySpeed: 1500,
-            responsive: [
-                {
-                    breakpoint: 900,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-
-    };
-
     /* Highlight the current section in the navigation bar
      * ------------------------------------------------------ */
     var ssWaypoints = function () {
@@ -227,7 +149,6 @@
         });
 
     };
-
 
     /* Stat Counter
      * ------------------------------------------------------ */
@@ -261,7 +182,6 @@
         });
     };
 
-
     /* Smooth Scrolling
      * ------------------------------------------------------ */
     var ssSmoothScroll = function () {
@@ -281,65 +201,6 @@
 
         });
     };
-
-
-    /* Placeholder Plugin Settings
-     * ------------------------------------------------------ */
-    var ssPlaceholder = function () {
-        $('input, textarea, select').placeholder();
-    };
-
-
-    /* Alert Boxes
-     * ------------------------------------------------------ */
-    var ssAlertBoxes = function () {
-
-        $('.alert-box').on('click', '.alert-box__close', function () {
-            $(this).parent().fadeOut(500);
-        });
-
-    };
-
-
-    /* Contact Form
-     * ------------------------------------------------------ */
-    var ssContactForm = function () {
-        /* local validation */
-        $('#contactForm').validate({
-            /* submit via ajax */
-            submitHandler: function (form) {
-                var sLoader = $('.submit-loader');
-                $.ajax({
-                    type: "POST",
-                    url: "/.netlify/functions/form-submit", // Atualize a URL para apontar para a função lambda no Netlify
-                    data: $(form).serialize(),
-                    beforeSend: function () {
-                        sLoader.slideDown("slow");
-                    },
-                    success: function (msg) {
-                        // Message was sent
-                        if (msg == 'OK') {
-                            sLoader.slideUp("slow");
-                            $('.message-warning').fadeOut();
-                            $('#contactForm').fadeOut();
-                            $('.message-success').fadeIn();
-                        } else {
-                            // There was an error
-                            sLoader.slideUp("slow");
-                            $('.message-warning').html(msg);
-                            $('.message-warning').slideDown("slow");
-                        }
-                    },
-                    error: function () {
-                        sLoader.slideUp("slow");
-                        $('.message-warning').html("Something went wrong. Please try again.");
-                        $('.message-warning').slideDown("slow");
-                    }
-                });
-            }
-        });
-    };
-    
 
     /* Back to Top
      * ------------------------------------------------------ */
@@ -370,17 +231,11 @@
         ssMoveHeader();
         ssMobileMenu();
         ssMasonryFolio();
-        ssPhotoswipe();
-        ssSlickSlider();
         ssWaypoints();
         ssStatCount();
         ssSmoothScroll();
-        ssPlaceholder();
-        ssAlertBoxes();
-        ssContactForm();
         ssBackToTop();
 
     })();
-
 
 })(jQuery);
