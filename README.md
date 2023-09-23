@@ -1,2 +1,2 @@
-# sidney_personal_portfolio
+# Sidney Personal Portfolio
  
