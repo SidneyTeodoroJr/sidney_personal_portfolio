@@ -1033,15 +1033,17 @@ section,
 .testimonials .testimonial-item {
   box-sizing: content-box;
   min-height: 320px;
+  padding-top: 3em;
 }
 
 .testimonials .testimonial-item .testimonial-img {
-  width: 90px;
+  width: 300px;
   border-radius: 50%;
   margin: -40px 0 0 40px;
   position: relative;
+
   z-index: 2;
-  border: 6px solid var(--background-color);
+  border: 10px solid var(--surface-color);
 }
 
 .testimonials .testimonial-item h3 {
